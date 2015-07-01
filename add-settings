@@ -1,0 +1,14 @@
+#!/bin/bash
+
+VIMRC="/usr/share/vim/vimrc"
+BASHRC="$HOME/.bashrc"
+
+# Make sure only root can run the script
+if [[ $EUID -ne 0 ]]
+then
+   echo "This script must be run as root" 1>&2
+   exit 1
+fi
+
+#cat settings/vim-config >> $VIMRC
+cat settings/bash-config >> $BASHRC

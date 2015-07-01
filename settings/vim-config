@@ -1,0 +1,3 @@
+
+map <F2> :tabp<Enter>
+map <F3> :tabn<Enter>
