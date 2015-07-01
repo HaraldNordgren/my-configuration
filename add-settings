@@ -7,8 +7,9 @@ BASHRC="$HOME/.bashrc"
 if [[ $EUID -ne 0 ]]
 then
    echo "This script must be run as root" 1>&2
+   echo 'Run with "sudo ./add-settings"'
    exit 1
 fi
 
-cat settings/vim-config >> $VIMRC
-cat settings/bash-config >> $BASHRC
+cat settings/vimrc >> $VIMRC && echo "Added settings to $VIMRC"
+cat settings/bashrc >> $BASHRC && echo "Added settings to $BASHRC"
