@@ -10,5 +10,5 @@ then
    exit 1
 fi
 
-#cat settings/vim-config >> $VIMRC
+cat settings/vim-config >> $VIMRC
 cat settings/bash-config >> $BASHRC
