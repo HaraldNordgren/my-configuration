@@ -1,8 +1,11 @@
 #!/bin/bash
 
+set -e
+
 VIMRC="/usr/share/vim/vimrc"
 BASHRC="$HOME/.bashrc"
 PROFILE="$HOME/.profile"
+GCONF="$HOME/.gconf/apps/gnome-terminal"
 
 # Make sure only root can run the script
 if [[ $EUID -ne 0 ]]
@@ -12,6 +15,18 @@ then
    exit 1
 fi
 
-cat settings/vimrc >> $VIMRC && echo "Added settings to $VIMRC"
-cat settings/bashrc >> $BASHRC && echo "Added settings to $BASHRC"
-cat settings/profile >> $PROFILE && echo "Added setting to $PROFILE"
+
+cd settings
+
+cat vimrc >> $VIMRC
+echo Added settings and mappings to $VIMRC
+
+cat bashrc >> $BASHRC
+echo Added settings to $BASHRC
+
+cat profile >> $PROFILE
+echo Added PATH in to $PROFILE
+
+cp -p --parents keybindings/%gconf.xml $GCONF
+chown $SUDO_USER:$SUDO_USER $GCONF/keybindings
+echo Added keybindings to $GCONF
