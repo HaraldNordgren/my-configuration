@@ -2,4 +2,15 @@
 map <S-Left> :tabp<Enter>
 map <S-Right> :tabn<Enter>
 
-set paste
+filetype plugin indent on
+set tabstop=4
+set shiftwidth=4
+set expandtab
+
+set showcmd
+set showmatch
+set ignorecase
+set smartcase
+set incsearch
+set autowrite
+set hidden 

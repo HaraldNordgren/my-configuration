@@ -2,13 +2,10 @@
 
 export PROMPT_COMMAND='history -a'
 
+alias lt='ls -X --group-directories-first'
+alias x='xdg-open'
 
-#base="/home/harald/courses/edaf35/project"
-#regex="$base*"
-#
-#if [[ $PWD != $regex ]]
-#then
-#    unset base
-#fi
-#
-#unset regex
+function mkcd
+{
+  mkdir $1 && cd $1
+}
