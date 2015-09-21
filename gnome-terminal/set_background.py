@@ -7,10 +7,10 @@ if len(sys.argv) != 2 and len(sys.argv) != 3:
 	print "Usage: %s <image> [size]" % sys.argv[0]
 	sys.exit(1)
 
-PROFILE_NAME	= "Profile0"
-SETTING_PATH	= "/apps/gnome-terminal/profiles/%s/background_image" % PROFILE_NAME
-CONVERT			= "convert"
-GCONFTOOL		= "gconftool-2"
+PROFILE_NAME    = "Profile0"
+SETTING_PATH    = "/apps/gnome-terminal/profiles/%s/background_image" % PROFILE_NAME
+CONVERT         = "convert"
+GCONFTOOL       = "gconftool-2"
 
 image	= sys.argv[1]
 
