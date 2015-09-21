@@ -15,7 +15,7 @@ BASHRC=$HOME/.bashrc
 PROFILE=$HOME/.profile
 GCONF=$HOME/.gconf/apps/gnome-terminal
 
-cd settings
+cd settings-data
 
 cat vimrc >> $VIMRC
 echo Added settings and mappings to $VIMRC
