@@ -1,1 +1,15 @@
-/home/harald/.bash_aliases
+alias s='sudo'
+alias x='xdg-open'
+alias n='nautilus .'
+alias c="echo -ne '\0033\0143'"
+
+alias lt='ls -X --group-directories-first'
+alias ind="sed 's/^/  /'"
+
+alias gits='git status'
+alias igrep='grep --color=auto -rI'
+alias vimp="vim -p"
+
+alias virtualbox='sudo modprobe vboxdrv; virtualbox'
+alias windows='sudo modprobe vboxdrv; VBoxManage startvm "Windows 8.1"'
+alias matlab='synclient HorizTwoFingerScroll=0; matlab; synclient HorizTwoFingerScroll=1'
