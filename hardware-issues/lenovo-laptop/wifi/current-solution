@@ -1,7 +1,9 @@
+#!/bin/bash
+
 # Show the different versions available in repositories
 apt-cache showpkg bcmwl-kernel-source
 
-# Downgrade driver (malfunction version was "6.30.223.248+bdcom-0ubuntu0.1")
+# Downgrade driver (malfunctioning version was "6.30.223.248+bdcom-0ubuntu0.1")
 apt-get install bcmwl-kernel-source=6.30.223.141+bdcom-0ubuntu2
 
 # Put it on hold to prevent automatic upgrades
