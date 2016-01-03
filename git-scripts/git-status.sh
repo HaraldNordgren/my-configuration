@@ -1,5 +1,8 @@
 #!/bin/bash
 
+# Reset terminal
+echo -ne '\0033\0143'
+
 start=$PWD
 
 for d in */; do
