@@ -10,8 +10,17 @@ for d in */; do
 
     if [ -n "$(git status --porcelain)" ]; then
         echo $d:
+        echo
         git -c color.status=always status | sed 's/^/  /'
         echo
+
+        if [ -n "$(git submodule)" ]; then
+            echo "  Submodules: "
+            echo
+            git submodule foreach git -c color.status=always status | \
+                sed 's/^/    /'
+            echo
+        fi
     fi
 
     cd $start
