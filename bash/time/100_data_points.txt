@@ -1,0 +1,7 @@
+Measure delay:      0.002707
+
+Reset total:        1.006898
+Only reset:         1.004191
+
+Echo reset total:   0.002852
+Only echo reset:    0.000145
