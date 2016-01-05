@@ -18,7 +18,7 @@ for d in */; do
 
 
     if [ -n "$(git submodule)" ]; then
-        git submodule --quiet foreach --recursive \
+        git submodule --quiet foreach \
         'if [ -n "$(git status --porcelain)" ]; then \
             echo "$name (in $(basename $toplevel))"; \
             git -c color.status=always status | \
