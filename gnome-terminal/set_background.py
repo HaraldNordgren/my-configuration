@@ -1,4 +1,4 @@
-#!/usr/bin/python
+#!/usr/bin/python2
 
 import sys, os
 import subprocess
@@ -8,7 +8,8 @@ if len(sys.argv) != 2 and len(sys.argv) != 3:
 	sys.exit(1)
 
 PROFILE_NAME    = "Profile0"
-SETTING_PATH    = "/apps/gnome-terminal/profiles/%s/background_image" % PROFILE_NAME
+SETTING_PATH    = \
+        "/apps/gnome-terminal/profiles/%s/background_image" % PROFILE_NAME
 CONVERT         = "convert"
 GCONFTOOL       = "gconftool-2"
 
@@ -35,3 +36,5 @@ image_abspath = os.path.abspath(image)
 
 gconftool_cmd = "%s --type string --set %s %s" % (GCONFTOOL, SETTING_PATH, image_abspath)
 subprocess.call(gconftool_cmd, shell=True)
+
+#print gconftool_cmd
