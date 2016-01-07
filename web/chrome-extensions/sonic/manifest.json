@@ -1,0 +1,10 @@
+{
+  "name": "Sonic",
+  "version": "0.1",
+  "manifest_version": 2,
+  "description": "My first Chrome extension.",
+  "browser_action": {
+    "default_icon": "Sonic_Sprite.png",
+    "popup": "helloworld.html"
+  }
+}
