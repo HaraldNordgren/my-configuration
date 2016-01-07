@@ -3,9 +3,17 @@
   "version": "0.1",
   "manifest_version": 2,
   "description": "My first Chrome extension.",
+  "permissions": [ "tabs" ],
+
   "browser_action": {
     "default_icon": "Sonic_Sprite.png",
     "default_popup": "helloworld.html"
   },
-  "permissions": [ "tabs" ]
+  
+  "content_scripts": [
+    {
+      "matches": ["http://stackoverflow.com/questions/*/*"],
+      "js": ["content.js"]
+    }
+  ]
 }
