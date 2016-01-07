@@ -13,7 +13,7 @@
   "content_scripts": [
     {
       "matches": ["http://stackoverflow.com/questions/*/*"],
-      "js": ["content.js"]
+      "js": ["jquery-1.11.3.js", "content.js"]
     }
   ]
 }
