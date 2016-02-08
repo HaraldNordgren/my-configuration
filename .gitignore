@@ -1,0 +1,7 @@
+*.swp
+
+*.class
+**/__pycache__/
+
+**/C:\\nppdf32Log\\debuglog.txt
+**/ghostdriver.log
