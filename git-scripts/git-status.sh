@@ -1,6 +1,5 @@
 #!/bin/bash
 
-
 # Reset terminal
 echo -ne '\0033\0143'
 
@@ -9,13 +8,20 @@ start=$PWD
 for d in */; do
     cd $d
 
+    git status &>/dev/null
+
+    if [ $? == 128 ]; then
+        not_repos+="$d "
+        cd $start
+        continue
+    fi
+
     if [ -n "$(git status --porcelain)" ]; then
         echo $d
         echo
         git -c color.status=always status | sed 's/^/  /'
         echo
     fi
-
 
     if [ -n "$(git submodule)" ]; then
         git submodule --quiet foreach \
@@ -28,4 +34,8 @@ for d in */; do
     fi
 
     cd $start
+done
+
+for d in $not_repos; do
+    echo -e "$d is not a git repo"
 done
