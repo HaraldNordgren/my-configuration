@@ -1,4 +1,5 @@
 
+
 map <S-Left> :tabp<Enter>
 map <S-Right> :tabn<Enter>
 
@@ -7,10 +8,8 @@ set tabstop=4
 set shiftwidth=4
 set expandtab
 
-set showcmd
-set showmatch
-set ignorecase
-set smartcase
-set incsearch
-set autowrite
-set hidden 
+"set smartindent
+"set autoindent
+
+autocmd BufNewFile *.py 0put =\"#!/usr/bin/env python3\<nl>\<nl>\"|$
+autocmd BufNewFile *.sh 0put =\"#!/bin/bash\<nl>\<nl>\"|$

@@ -16,7 +16,9 @@ for d in */; do
         continue
     fi
 
-    if [ -n "$(git status --porcelain)" ]; then
+    if [[ -n "$(git status --porcelain)" || \
+        -n "$(git rev-list origin/master..master)" ]]; then
+
         echo $d
         echo
         git -c color.status=always status | sed 's/^/  /'
