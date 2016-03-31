@@ -2,36 +2,42 @@
 
 set -e
 
+function overwrite {
+    cp $1 $2
+    chown $SUDO_USER:$SUDO_USER $2
+    echo "Overwrote $2"
+}
+
+function append {
+    cat $1 >> $2
+    echo "Appended to $2"
+}
+
 # Make sure only root can run the script
 if [[ $EUID -ne 0 ]]
 then
-   echo This script must be run as root 1>&2
-   echo Run with '"sudo ./add-settings"'
+   echo "Must run as root!" 1>&2
    exit 1
 fi
 
-VIMRC=/usr/share/vim/vimrc
+SCRIPT=$(readlink -f $0)
+cd $(dirname $SCRIPT)
+
+#HOME="$PWD/test"
 BASHRC=$HOME/.bashrc
 BASH_ALIASES=$HOME/.bash_aliases
 PROFILE=$HOME/.profile
-GCONF=$HOME/.gconf/apps/gnome-terminal
+VIMRC=/etc/vim/vimrc
+GCONF_BASE=$HOME/.gconf
+GCONF=$GCONF_BASE/apps/gnome-terminal
 
-SCRIPT=$(readlink -f "$0")
-SCRIPTPATH=$(dirname "$SCRIPT")
-cd $SCRIPTPATH
+overwrite settings-data/bashrc $BASHRC
+overwrite settings-data/bash_aliases $BASH_ALIASES
+append settings-data/profile $PROFILE
+chown $SUDO_USER:$SUDO_USER $PROFILE
+append settings-data/vimrc $VIMRC
 
-cat settings-data/vimrc >> $VIMRC
-echo Added settings and mappings to $VIMRC
-
-cp settings-data/bashrc $BASHRC
-echo Overwrote $BASHRC
-
-cp rc-files/bash_aliases $BASH_ALIASES
-echo Overwrote $BASH_ALIASES
-
-cat settings-data/profile >> $PROFILE
-echo Added '"./"' to $PATH in $PROFILE
-
+mkdir -p $GCONF
 cp -p --parents keybindings/%gconf.xml $GCONF
-chown $SUDO_USER:$SUDO_USER $GCONF/keybindings
-echo Added keybindings to $GCONF
+chown $SUDO_USER:$SUDO_USER $GCONF_BASE -R
+echo "Added keybindings to $GCONF"

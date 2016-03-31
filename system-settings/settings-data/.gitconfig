@@ -1,0 +1,12 @@
+[user]
+	name = HaraldNordgren
+	email = haraldnordgren@gmail.com
+[push]
+	default = simple
+[credential]
+    helper = /usr/share/doc/git/contrib/credential/gnome-keyring/git-credential-gnome-keyring
+[core]
+	autocrlf = input
+	excludesfile = ~/.gitignore
+[credentials]
+	helper = cache
