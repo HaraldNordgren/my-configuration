@@ -1,6 +1,7 @@
 #!/bin/bash
 
-QT_BASE_DIR=/home/harald/git-repos/qt5/qtbase
+#QT_BASE_DIR=/home/harald/git-repos/qt5/qtbase
+QT_BASE_DIR=/usr/local/Qt-5.6.1
 export QTDIR=$QT_BASE_DIR
 export PATH=$QT_BASE_DIR/bin:$PATH
 

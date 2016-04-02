@@ -9,7 +9,7 @@ alias c="echo -ne '\0033\0143'"
 alias lt='ls -X --group-directories-first'
 
 # Open several files in tabs in Vim
-alias vimp="vim -p"
+alias v="vim -p"
 
 # Grep recursive and ignore binary files
 alias igrep='grep --color=auto -rI'
@@ -22,3 +22,6 @@ alias windows='sudo modprobe vboxdrv; VBoxManage startvm "Windows 8.1"'
 
 # Disable side-scroll while Matlab is running
 alias matlab='synclient HorizTwoFingerScroll=0; matlab; synclient HorizTwoFingerScroll=1'
+
+# Search history
+alias h='history | grep'
