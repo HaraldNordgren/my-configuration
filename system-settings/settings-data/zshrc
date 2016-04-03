@@ -59,6 +59,18 @@ RPROMPT=$'$(vcs_info_wrapper)'
 
 ## end of vcs_info ##
 
+setopt autocd
+
+#http://superuser.com/q/633926/
+#http://stackoverflow.com/q/10036255/
+case $TERM in
+    xterm*)
+        precmd () {
+            [[ "$PWD" =~ ^"$HOME"(/|$) ]] && title="~${PWD#$HOME}" || title=$PWD
+            print -Pn "\e]0;$(whoami): $title\a"}
+        ;;
+esac
+
 
 function mkcd
 {
@@ -110,11 +122,6 @@ export PATH="/usr/local/heroku/bin:$PATH"
 # added by Miniconda2 3.19.0 installer
 export PATH="/home/harald/opt/miniconda2/bin:$PATH"
 
-
-case $TERM in
-    xterm*)
-        precmd () {
-            [[ "$PWD" =~ ^"$HOME"(/|$) ]] && title="~${PWD#$HOME}" || title=$PWD
-            print -Pn "\e]0;$(whoami): $title\a"}
-        ;;
-esac
+#TODO
+#Return code of last command
+#Git: Show uncommited
