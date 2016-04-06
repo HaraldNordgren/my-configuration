@@ -2,10 +2,10 @@
 
 set -e
 
-function overwrite {
-    cp $1 $2
+function hardlink {
+    ln $1 $2 -f
     chown $SUDO_USER:$SUDO_USER $2
-    echo "Overwrote $2"
+    echo "Hardlinked $1"
 }
 
 function append {
@@ -27,15 +27,16 @@ cd $(dirname $SCRIPT)
 BASHRC=$HOME/.bashrc
 BASH_ALIASES=$HOME/.bash_aliases
 PROFILE=$HOME/.profile
-VIMRC=/etc/vim/vimrc
+VIMRC=$HOME/.vimrc
 GCONF_BASE=$HOME/.gconf
 GCONF=$GCONF_BASE/apps/gnome-terminal
 
-overwrite settings-data/bashrc $BASHRC
-overwrite settings-data/bash_aliases $BASH_ALIASES
-append settings-data/profile $PROFILE
+hardlink settings-data/.bashrc $BASHRC
+hardlink settings-data/.bash_aliases $BASH_ALIASES
+hardlink settings-data/.vimrc $VIMRC
+
+append settings-data/.profile $PROFILE
 chown $SUDO_USER:$SUDO_USER $PROFILE
-append settings-data/vimrc $VIMRC
 
 mkdir -p $GCONF
 cp -p --parents keybindings/%gconf.xml $GCONF
