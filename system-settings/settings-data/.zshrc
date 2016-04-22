@@ -1,76 +1,93 @@
-# Set up the prompt
+# Path to your oh-my-zsh installation.
+#export ZSH=/home/harald/.oh-my-zsh
+export ZSH=/home/harald/git-repos/oh-my-zsh
 
-autoload -Uz promptinit
-promptinit
-prompt adam1
+# Set name of the theme to load.
+# Look in ~/.oh-my-zsh/themes/
+# Optionally, if you set this to "random", it'll load a random theme each
+# time that oh-my-zsh is loaded.
+#ZSH_THEME=random
+ZSH_THEME=peepcode
+#ZSH_THEME=itchy
+#ZSH_THEME=nicoulaj
+#ZSH_THEME=agnosterzak
 
-setopt histignorealldups sharehistory
+# Uncomment the following line to use case-sensitive completion.
+# CASE_SENSITIVE="true"
 
-# Use emacs keybindings even if our EDITOR is set to vi
-bindkey -e
+# Uncomment the following line to use hyphen-insensitive completion. Case
+# sensitive completion must be off. _ and - will be interchangeable.
+HYPHEN_INSENSITIVE="true"
 
-# Keep 1000 lines of history within the shell and save it to ~/.zsh_history:
-HISTSIZE=1000
-SAVEHIST=1000
-HISTFILE=~/.zsh_history
+# Uncomment the following line to disable bi-weekly auto-update checks.
+# DISABLE_AUTO_UPDATE="true"
 
-# Use modern completion system
-autoload -Uz compinit
-compinit
+# Uncomment the following line to change how often to auto-update (in days).
+# export UPDATE_ZSH_DAYS=13
 
-zstyle ':completion:*' auto-description 'specify: %d'
-zstyle ':completion:*' completer _expand _complete _correct _approximate
-zstyle ':completion:*' format 'Completing %d'
-zstyle ':completion:*' group-name ''
-zstyle ':completion:*' menu select=2
-eval "$(dircolors -b)"
-zstyle ':completion:*:default' list-colors ${(s.:.)LS_COLORS}
-zstyle ':completion:*' list-colors ''
-zstyle ':completion:*' list-prompt %SAt %p: Hit TAB for more, or the character to insert%s
-zstyle ':completion:*' matcher-list '' 'm:{a-z}={A-Z}' 'm:{a-zA-Z}={A-Za-z}' 'r:|[._-]=* r:|=* l:|=*'
-zstyle ':completion:*' menu select=long
-zstyle ':completion:*' select-prompt %SScrolling active: current selection at %p%s
-zstyle ':completion:*' use-compctl false
-zstyle ':completion:*' verbose true
+# Uncomment the following line to disable colors in ls.
+# DISABLE_LS_COLORS="true"
 
-zstyle ':completion:*:*:kill:*:processes' list-colors '=(#b) #([0-9]#)*=0=01;31'
-zstyle ':completion:*:kill:*' command 'ps -u $USER -o pid,%cpu,tty,cputime,cmd'
+# Uncomment the following line to disable auto-setting terminal title.
+# DISABLE_AUTO_TITLE="true"
 
+# Uncomment the following line to enable command auto-correction.
+# ENABLE_CORRECTION="true"
 
-## vcs_info ##
+# Uncomment the following line to display red dots whilst waiting for completion.
+# COMPLETION_WAITING_DOTS="true"
 
-setopt prompt_subst
-autoload -Uz vcs_info
-zstyle ':vcs_info:*' actionformats \
-        '%F{5}(%f%s%F{5})%F{3}-%F{5}[%F{2}%b%F{3}|%F{1}%a%F{5}]%f '
-zstyle ':vcs_info:*' formats       \
-        '%F{5}(%f%s%F{5})%F{3}-%F{5}[%F{2}%b%F{5}]%f '
-zstyle ':vcs_info:(sv[nk]|bzr):*' branchformat '%b%F{1}:%F{3}%r'
+# Uncomment the following line if you want to disable marking untracked files
+# under VCS as dirty. This makes repository status check for large repositories
+# much, much faster.
+# DISABLE_UNTRACKED_FILES_DIRTY="true"
 
-zstyle ':vcs_info:*' enable git
+# Uncomment the following line if you want to change the command execution time
+# stamp shown in the history command output.
+# The optional three formats: "mm/dd/yyyy"|"dd.mm.yyyy"|"yyyy-mm-dd"
+# HIST_STAMPS="mm/dd/yyyy"
 
-vcs_info_wrapper() {
-  vcs_info
-  if [ -n "$vcs_info_msg_0_" ]; then
-    echo "%{$fg[grey]%}${vcs_info_msg_0_}%{$reset_color%}$del"
-  fi
-}
-RPROMPT=$'$(vcs_info_wrapper)'
+# Would you like to use another custom folder than $ZSH/custom?
+# ZSH_CUSTOM=/path/to/new-custom-folder
 
-## end of vcs_info ##
+# Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
+# Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
+# Example format: plugins=(rails git textmate ruby lighthouse)
+# Add wisely, as too many plugins slow down shell startup.
+plugins=(git colored-man-pages ubuntu history jsontools python)
+#plugins=(git colored-man-pages ubuntu history)
 
-setopt autocd
+# User configuration
 
-#http://superuser.com/q/633926/
-#http://stackoverflow.com/q/10036255/
-case $TERM in
-    xterm*)
-        precmd () {
-            [[ "$PWD" =~ ^"$HOME"(/|$) ]] && title="~${PWD#$HOME}" || title=$PWD
-            print -Pn "\e]0;$(whoami): $title\a"}
-        ;;
-esac
+export PATH="/home/harald/opt/miniconda2/bin:/usr/local/heroku/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/opt/openlava-2.2/bin:/opt/openlava-2.2/bin:./"
+# export MANPATH="/usr/local/man:$MANPATH"
 
+source $ZSH/oh-my-zsh.sh
+
+# You may need to manually set your language environment
+# export LANG=en_US.UTF-8
+
+# Preferred editor for local and remote sessions
+# if [[ -n $SSH_CONNECTION ]]; then
+#   export EDITOR='vim'
+# else
+#   export EDITOR='mvim'
+# fi
+
+# Compilation flags
+# export ARCHFLAGS="-arch x86_64"
+
+# ssh
+# export SSH_KEY_PATH="~/.ssh/dsa_id"
+
+# Set personal aliases, overriding those provided by oh-my-zsh libs,
+# plugins, and themes. Aliases can be placed here, though oh-my-zsh
+# users are encouraged to define aliases within the ZSH_CUSTOM folder.
+# For a full list of active aliases, run `alias`.
+#
+# Example aliases
+# alias zshconfig="mate ~/.zshrc"
+# alias ohmyzsh="mate ~/.oh-my-zsh"
 
 function mkcd
 {
@@ -85,7 +102,7 @@ function unzipd
 
 # Default Bash aliases
 alias grep='grep --color=auto'
-alias ls='ls --color=auto'
+alias ls='ls -B --color=auto'
 alias ll='ls -alF'
 
 # Resets the terminal without the time delay
@@ -105,11 +122,11 @@ alias windows='sudo modprobe vboxdrv; VBoxManage startvm "Windows 8.1"'
 alias matlab='synclient HorizTwoFingerScroll=0; matlab; synclient HorizTwoFingerScroll=1'
 
 # Misc
-alias gits='git status'
+#alias gits='git status'
 alias ind="sed 's/^/  /'"
 
 # Single letter aliases for my most used commands
-alias h='history 1 | grep'
+#alias h='history | grep'
 alias n='nautilus .'
 alias s='sudo'
 alias v="vim -p"
@@ -121,7 +138,3 @@ export PATH="/usr/local/heroku/bin:$PATH"
 
 # added by Miniconda2 3.19.0 installer
 export PATH="/home/harald/opt/miniconda2/bin:$PATH"
-
-#TODO
-#Return code of last command
-#Git: Show uncommited
