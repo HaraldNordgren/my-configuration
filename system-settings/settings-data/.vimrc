@@ -53,8 +53,16 @@ if filereadable("/etc/vim/vimrc.local")
 endif
 
 
+"colorscheme desert
+"colorscheme koehler
+colorscheme delek
+"colorscheme slate
+
 map <S-Left> :tabp<Enter>
 map <S-Right> :tabn<Enter>
+
+map <S-Right> :tabn<Enter>
+map <C-p> :set paste!<Enter>
 
 filetype plugin indent on
 set tabstop=4
@@ -63,6 +71,7 @@ set expandtab
 
 "set smartindent
 "set autoindent
+set autoread
 
 autocmd BufNewFile *.py 0put =\"#!/usr/bin/env python3\<nl>\<nl>\"|$
 "autocmd BufNewFile *.sh 0put =\"#!/bin/bash\<nl>\<nl>\"|$

@@ -42,3 +42,5 @@ mkdir -p $GCONF
 cp -p --parents keybindings/%gconf.xml $GCONF
 chown $SUDO_USER:$SUDO_USER $GCONF_BASE -R
 echo "Added keybindings to $GCONF"
+
+echo "Log in and out to reload gconf and profile"
