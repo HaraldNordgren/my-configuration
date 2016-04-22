@@ -42,7 +42,7 @@ int main(int argc, char *argv[]) {
     cout << "Raw logs:" << endl;
     double rawLog = log10(absValue);
     double rawLogFloored = floor(log10(absValue));
-    double shift = pow(10, -rawLogFloored + 1);
+    double shift = pow(10, -floor(log10(absValue)) + 1);
     double rawStretched = absValue * shift;
     double absRounded = round(rawStretched) / shift;
     cout << rawLog << endl;
@@ -54,7 +54,7 @@ int main(int argc, char *argv[]) {
     
     //cout << "Abs rounded: " << endl << round(absValue * 100) / 100 << endl << endl;
 
-    double log = log10(absRounded);
+    double log = log10(absValue);
     //double log = log10(round(absValue * 100) / 100);
     //double log = log10(absValue);
     cout << "Logs:" << endl << log << endl;
