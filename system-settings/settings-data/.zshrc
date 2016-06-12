@@ -1,6 +1,6 @@
 # Path to your oh-my-zsh installation.
 #export ZSH=/home/harald/.oh-my-zsh
-export ZSH=/home/harald/git-repos/oh-my-zsh
+export ZSH=~/git/oh-my-zsh
 
 # Set name of the theme to load.
 # Look in ~/.oh-my-zsh/themes/
@@ -59,7 +59,7 @@ plugins=(git colored-man-pages ubuntu history jsontools python)
 
 # User configuration
 
-export PATH="/home/harald/opt/miniconda2/bin:/usr/local/heroku/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/opt/openlava-2.2/bin:/opt/openlava-2.2/bin:./"
+export PATH="/home/harald/Downloads/Software/ffmpeg-3.0.2-64bit-static:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games"
 # export MANPATH="/usr/local/man:$MANPATH"
 
 source $ZSH/oh-my-zsh.sh
