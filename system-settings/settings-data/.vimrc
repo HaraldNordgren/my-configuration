@@ -72,10 +72,12 @@ set expandtab
 "set smartindent
 "set autoindent
 set autoread
+"set number
+"set mouse=nicr
 
 autocmd BufNewFile *.py 0put =\"#!/usr/bin/env python3\<nl>\<nl>\"|$
-"autocmd BufNewFile *.sh 0put =\"#!/bin/bash\<nl>\<nl>\"|$
-autocmd BufNewFile *.sh 0put =\"#!/usr/bin/env zsh\<nl>\<nl>\"|$
+autocmd BufNewFile *.sh 0put =\"#!/bin/bash\<nl>\<nl>\"|$
+"autocmd BufNewFile *.sh 0put =\"#!/usr/bin/env zsh\<nl>\<nl>\"|$
 
 au BufWritePost * if getline(1) =~ "^#!.*/bin/" | silent execute "!chmod a+x <afile>" | endif
 "https://bbs.archlinux.org/viewtopic.php?id=126304
