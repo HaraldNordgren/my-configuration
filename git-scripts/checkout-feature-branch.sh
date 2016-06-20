@@ -1,8 +1,8 @@
 #!/bin/bash
 
-version_branch=$(echo "$1" | cut -d'_' -f 1)
-
 set -e
+
+version_branch=$(echo "$1" | cut -d'_' -f 1)
 
 git checkout $version_branch
 git checkout -b $1
