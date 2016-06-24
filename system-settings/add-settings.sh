@@ -62,8 +62,16 @@ if [[ $(uname -s) == Linux ]] && [[ "$(uname -v)" == *"Ubuntu"* ]]; then
 
     echo "INSTALLING SOFTWARE PACKAGES"
     sudo $APT update
-    sudo $APT install -y qbittorrent vim vlc zsh postgresql
+    sudo $APT install -y qbittorrent vim vlc zsh postgresql libgnome-keyring-dev
     echo
+
+    echo "SETTING UP GNOME KEYRING FOR GIT"
+    cd /usr/share/doc/git/contrib/credential/gnome-keyring
+sudo make
+    git config --global credential.helper /usr/share/doc/git/contrib/credential/gnome-keyring/git-credential-gnome-keyring
+    echo
+
+    #cd -
 fi
 
 echo "SUCCESSFULLY INSTALLED CONFIG"
