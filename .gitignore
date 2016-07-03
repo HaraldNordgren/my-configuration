@@ -1,11 +1,11 @@
-*.swp
-
 gnome-terminal/backgrounds/
 gnome-terminal/sample_settings/
 
 system-settings/test/
-*.class
-**/__pycache__/
 
+*.swp
+*.class
+
+**/__pycache__/
 **/C:\\nppdf32Log\\debuglog.txt
 **/ghostdriver.log
