@@ -37,11 +37,7 @@ git config --global --replace-all core.excludesfile ~/.gitignore
 git config --global push.default simple
 git config --global user.email "haraldnordgren@gmail.com"
 git config --global user.name "HaraldNordgren"
-
-symlink $PWD ~
-(cd ../.. && symlink my-resume ~)
 echo
-
 
 if [[ $(uname -s) == Linux ]] && [[ "$(uname -v)" == *"Ubuntu"* ]]; then
 
@@ -72,6 +68,10 @@ if [[ $(uname -s) == Linux ]] && [[ "$(uname -v)" == *"Ubuntu"* ]]; then
     sudo $APT update
     sudo $APT install -y qbittorrent vim vlc zsh postgresql
     echo
+    
+    echo "REMOVING SOFTWARE PACKAGES"
+    sudo $APT purge -y apport
+    echo
 
     echo "SETTING UP GNOME KEYRING FOR GIT"
     sudo $APT install -y libgnome-keyring-dev
@@ -79,8 +79,7 @@ if [[ $(uname -s) == Linux ]] && [[ "$(uname -v)" == *"Ubuntu"* ]]; then
     sudo make 1> /dev/null
     git config --global credential.helper /usr/share/doc/git/contrib/credential/gnome-keyring/git-credential-gnome-keyring
     echo
-
-    #cd -
 fi
 
 echo "SUCCESSFULLY INSTALLED CONFIG"
+
