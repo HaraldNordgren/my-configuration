@@ -29,6 +29,7 @@ echo "LINKING CONFIG FILES"
 hardlink settings-data/.zshrc $HOME/.zshrc
 hardlink settings-data/.vimrc $HOME/.vimrc
 #hardlink settings-data/.bashrc $HOME/.bashrc
+hardlink settings-data/.hgrc $HOME/.hgrc
 echo
 
 echo "SETTING GIT CONFIG LINKING REPOSITORIES"
