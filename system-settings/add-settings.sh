@@ -4,10 +4,16 @@ set -e
 
 sudo true 1> /dev/null
 
+if [[ $(uname -s) == Linux ]]; then
+    user_string=$USER:$USER
+else
+    user_string=$USER
+fi
+
 function hardlink {
     if [ ! -f $1 ]; then return; fi
     sudo ln -f $1 $2
-    sudo chown $USER:$USER $2
+    sudo chown $user_string $2
     echo "Hardlinked $(basename $1 | sed 's|^\.||') to $2"
 }
 
@@ -16,7 +22,7 @@ function symlink {
     dest=$2/$(basename $1)
     rm -f $dest
     sudo ln -s $1 $2
-    sudo chown $USER:$USER $2
+    sudo chown $user_string $2
     echo "Symlinked $(basename $1) to $dest"
 }
 
@@ -28,7 +34,6 @@ fi
 echo "LINKING CONFIG FILES"
 hardlink settings-data/.zshrc $HOME/.zshrc
 hardlink settings-data/.vimrc $HOME/.vimrc
-#hardlink settings-data/.bashrc $HOME/.bashrc
 hardlink settings-data/.hgrc $HOME/.hgrc
 echo
 
@@ -80,7 +85,12 @@ if [[ $(uname -s) == Linux ]] && [[ "$(uname -v)" == *"Ubuntu"* ]]; then
     sudo make 1> /dev/null
     git config --global credential.helper /usr/share/doc/git/contrib/credential/gnome-keyring/git-credential-gnome-keyring
     echo
+
+elif [[ $(uname -s) == Darwin ]]; then
+    mkdir -p $HOME/.ssh
+    hardlink settings-data/.ssh_config $HOME/.ssh/config
 fi
+
 
 echo "SUCCESSFULLY INSTALLED CONFIG"
 
