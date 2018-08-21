@@ -68,29 +68,21 @@ export SSH_KEY_PATH="~/.ssh/dsa_id"
 # For a full list of active aliases, run `alias`.
 
 
-unsetopt share_history
 export ZSH=~/git-repos/oh-my-zsh
 
 if [ $(uname -s) = Linux ]; then
 
     export PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/home/harald/bin:~/git-repos/my-configuration/git-scripts
 
-    #plugins=(git colored-man-pages ubuntu history jsontools python)
     plugins=(git colored-man-pages ubuntu history python)
-
-    #alias virtualbox='sudo modprobe vboxdrv; virtualbox'
-    #alias windows='sudo modprobe vboxdrv; VBoxManage startvm "Windows 8.1"'
-    #alias matlab='synclient HorizTwoFingerScroll=0; matlab; synclient HorizTwoFingerScroll=1'
     alias ls='ls -B --color=auto'
     alias lt='ls -X --group-directories-first'
     alias c="echo -ne '\0033\0143'"
-    
     function o { if [ -n "$1" ]; then xdg-open $1&; else nautilus .&; fi }
 
 elif [ $(uname -s) = Darwin ]; then
 
     plugins=(git colored-man-pages history jsontools python)
-
     alias ls='ls -G'
     alias o='open .'
 
@@ -110,4 +102,17 @@ alias pp='python -m json.tool'
 alias s='sudo'
 alias v="vim -p"
 alias l='less'
+alias gs=
+
+unsetopt correct_all
+unsetopt share_history
+
+export PATH="$HOME/.cargo/bin:$PATH"
+
+export GOPATH="/Users/harald/go"
+export PATH="$GOPATH/bin:$PATH"
+
+DISABLE_UPDATE_PROMPT=true
+
+MY_CONFIG=$HOME/git-repos/my-configuration
 
