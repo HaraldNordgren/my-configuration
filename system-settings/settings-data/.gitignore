@@ -1,10 +1,11 @@
+*.class
+*.DS_Store
+*.pyc
 *.swp
 *.swo
-*.pyc
-*.class
-
 *#
 *~
 
 **/__pycache__/
 **/.idea/
+
